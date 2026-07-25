@@ -7,10 +7,14 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// get index.html file
+// get static pages
 app.get('/', (req, res) => {
-    res.sendFile(index.html);
-} );
+    res.send('index.html');
+});
+
+app.get('/about', (req, res) => {
+    res.json({ message: 'This is the about page' });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
